@@ -33,9 +33,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		let pickerController = DKImagePickerController()
 		
 		// Custom camera
-//		pickerController.UIDelegate = CustomUIDelegate()
+		pickerController.UIDelegate = CustomPickerUI()
 //		pickerController.modalPresentationStyle = .overCurrentContext
-		
+		pickerController.shouldUseTick = true
 		pickerController.assetType = assetType
 		pickerController.allowsLandscape = allowsLandscape
 		pickerController.allowMultipleTypes = allowMultipleType

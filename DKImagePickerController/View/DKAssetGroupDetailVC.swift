@@ -214,7 +214,11 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
 		
     internal var selectedGroupId: String?
 	
-	internal weak var imagePickerController: DKImagePickerController!
+    internal weak var imagePickerController: DKImagePickerController! {
+        didSet {
+            shouldUseTick = imagePickerController.shouldUseTick
+        }
+    }
 	
 	fileprivate var groupListVC: DKAssetGroupListVC!
     
@@ -225,6 +229,9 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
 	fileprivate var footerView: UIView?
 	
 	fileprivate var currentViewSize: CGSize!
+    
+    fileprivate var shouldUseTick: Bool = false
+    
 	override func viewWillLayoutSubviews() {
 		super.viewWillLayoutSubviews()
 		
@@ -384,10 +391,12 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
                 cell.thumbnailImageView.image = image
             }
         }
-
+        
 		if let index = self.imagePickerController.selectedAssets.index(of: asset) {
 			cell.isSelected = true
-			cell.checkView.checkLabel.text = "\(index + 1)"
+            cell.checkView.checkLabel.text = "\( shouldUseTick ? "✓" : "\(index + 1)" ) "
+            
+            
 			self.collectionView!.selectItem(at: indexPath, animated: false, scrollPosition: [])
 		} else {
 			cell.isSelected = false
@@ -438,10 +447,10 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let selectedAsset = (collectionView.cellForItem(at: indexPath) as? DKAssetCell)?.asset
-		self.imagePickerController.selectImage(selectedAsset!)
+        self.imagePickerController.selectImage(selectedAsset!)
         
         if let cell = collectionView.cellForItem(at: indexPath) as? DKAssetCell {
-            cell.checkView.checkLabel.text = "\(self.imagePickerController.selectedAssets.count)"
+            cell.checkView.checkLabel.text = "\( shouldUseTick ? "✓" : "\(self.imagePickerController.selectedAssets.count)")"
         }
     }
     
@@ -460,7 +469,7 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
 					let selectedIndex = self.imagePickerController.selectedAssets.index(of: selectedCell.asset)!
 					
 					if selectedIndex > removedIndex {
-						selectedCell.checkView.checkLabel.text = "\(Int(selectedCell.checkView.checkLabel.text!)! - 1)"
+                        selectedCell.checkView.checkLabel.text = "\( shouldUseTick ? "✓" : "\(Int(selectedCell.checkView.checkLabel.text!)! - 1)" )"
 					}
 				}
 			}

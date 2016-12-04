@@ -123,7 +123,10 @@ open class DKImagePickerController : UINavigationController {
 	lazy public var UIDelegate: DKImagePickerControllerUIDelegate = {
 		return DKImagePickerControllerDefaultUIDelegate()
 	}()
-
+    
+    /// Allow user to show ticks at cells
+    public var shouldUseTick = false
+    
     /// Forces selection of tapped image immediatly.
 	public var singleSelect = false
 		
