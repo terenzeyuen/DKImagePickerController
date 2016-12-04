@@ -95,7 +95,22 @@ public protocol DKImagePickerControllerUIDelegate {
      Set the color of the background of the collection view.
      */
     func imagePickerControllerCollectionViewBackgroundColor() -> UIColor
+    
+    /**
+     Set position of selected label
+     */
+    func selectedLabelPosition() -> DKCheckedLabelPosition
+    
+    /**
+     Set position of selected label
+     */
+    func useSelectedBorders() -> Bool
 
+}
+
+@objc
+public enum DKCheckedLabelPosition: Int {
+    case topLeft, topRight, bottomLeft, bottomRight, defaultPosition
 }
 
 /**

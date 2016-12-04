@@ -13,4 +13,12 @@ class CustomPickerUI: DKImagePickerControllerDefaultUIDelegate {
     override func imagePickerControllerCheckedNumberColor() -> UIColor {
         return .white
     }
+    
+    override func selectedLabelPosition() -> DKCheckedLabelPosition {
+        return .bottomRight
+    }
+    
+    override func useSelectedBorders() -> Bool {
+        return false
+    }
 }

@@ -10,6 +10,15 @@ import UIKit
 
 @objc
 open class DKImagePickerControllerDefaultUIDelegate: NSObject, DKImagePickerControllerUIDelegate {
+    
+    public func selectedLabelPosition() -> DKCheckedLabelPosition {
+        return .defaultPosition
+    }
+    
+    public func useSelectedBorders() -> Bool {
+        return true
+    }
+
 	
 	open weak var imagePickerController: DKImagePickerController!
 	

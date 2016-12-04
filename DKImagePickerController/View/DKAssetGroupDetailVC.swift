@@ -77,9 +77,27 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
             
             internal lazy var checkLabel: UILabel = {
                 let label = UILabel()
-                label.textAlignment = .right
+                label.textAlignment = .center
                 
                 return label
+            }()
+            
+            var checkLabelPosition: DKCheckedLabelPosition!
+            
+            internal lazy var labelPosition: CGRect = {
+                switch self.checkLabelPosition! {
+                case .bottomLeft:
+                    return CGRect(x: 0, y: self.bounds.height - 25, width: 20, height: 20)
+                case .topLeft:
+                    return CGRect(x: 0, y: 0, width: 20, height: 20)
+                case .topRight:
+                    return CGRect(x: self.bounds.width - 25, y: 0, width: 20, height: 20)
+                case .bottomRight:
+                    return CGRect(x: self.bounds.width - 25, y: self.bounds.height - 25, width: 20, height: 20)
+                case .defaultPosition:
+                    return CGRect(x: 0, y: 5, width: self.bounds.width - 5, height: 20)
+                }
+                
             }()
             
             override init(frame: CGRect) {
@@ -97,7 +115,8 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
                 super.layoutSubviews()
                 
                 self.checkImageView.frame = self.bounds
-                self.checkLabel.frame = CGRect(x: 0, y: 5, width: self.bounds.width - 5, height: 20)
+                //
+                self.checkLabel.frame = labelPosition
             }
             
         } /* DKImageCheckView */
@@ -374,6 +393,7 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
 		}
 		
 		cell = self.collectionView!.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! DKAssetCell
+        cell.checkView.checkLabelPosition = self.imagePickerController.UIDelegate.selectedLabelPosition()
         cell.checkView.checkImageView.tintColor = self.imagePickerController.UIDelegate.imagePickerControllerCheckedImageTintColor()
         cell.checkView.checkLabel.font = self.imagePickerController.UIDelegate.imagePickerControllerCheckedNumberFont()
         cell.checkView.checkLabel.textColor = self.imagePickerController.UIDelegate.imagePickerControllerCheckedNumberColor()
