@@ -10,15 +10,6 @@ import UIKit
 
 @objc
 open class DKImagePickerControllerDefaultUIDelegate: NSObject, DKImagePickerControllerUIDelegate {
-    
-    public func selectedLabelPosition() -> DKCheckedLabelPosition {
-        return .defaultPosition
-    }
-    
-    public func shouldUseCheckedImage() -> Bool {
-        return true
-    }
-
 	
 	open weak var imagePickerController: DKImagePickerController!
 	
@@ -136,7 +127,15 @@ open class DKImagePickerControllerDefaultUIDelegate: NSObject, DKImagePickerCont
     open func imagePickerControllerCollectionViewBackgroundColor() -> UIColor {
         return UIColor.white
     }
-	
+    
+    open func selectedLabelPosition() -> DKCheckedLabelPosition {
+        return .defaultPosition
+    }
+    
+    open func shouldUseCheckedImage() -> Bool {
+        return true
+    }
+
 	// Internal
 	
 	public func checkCameraPermission(_ camera: DKCamera) {
