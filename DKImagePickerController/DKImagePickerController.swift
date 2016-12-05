@@ -104,7 +104,7 @@ public protocol DKImagePickerControllerUIDelegate {
     /**
      Set position of selected label
      */
-    func useSelectedBorders() -> Bool
+    func shouldUseCheckedImage() -> Bool
 
 }
 

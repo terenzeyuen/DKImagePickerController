@@ -69,7 +69,11 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
     class DKAssetCell: UICollectionViewCell {
         
         class DKImageCheckView: UIView {
-
+            
+            internal var checkLabelPosition: DKCheckedLabelPosition!
+            
+            internal var shouldUseCheckedImage: Bool!
+            
             internal lazy var checkImageView: UIImageView = {
                 let imageView = UIImageView(image: DKImageResource.checkedImage().withRenderingMode(.alwaysTemplate))
                 return imageView
@@ -78,11 +82,9 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
             internal lazy var checkLabel: UILabel = {
                 let label = UILabel()
                 label.textAlignment = .center
-                
                 return label
             }()
             
-            var checkLabelPosition: DKCheckedLabelPosition!
             
             internal lazy var labelPosition: CGRect = {
                 switch self.checkLabelPosition! {
@@ -102,7 +104,6 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
             
             override init(frame: CGRect) {
                 super.init(frame: frame)
-                
                 self.addSubview(checkImageView)
                 self.addSubview(checkLabel)
             }
@@ -113,9 +114,15 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
             
             override func layoutSubviews() {
                 super.layoutSubviews()
+                if self.shouldUseCheckedImage != true {
+                    checkImageView.frame = .zero
+                    checkLabel.layer.backgroundColor = UIColor.red.cgColor
+                    checkLabel.layer.cornerRadius = 10
+                    checkLabel.layer.masksToBounds = true
+                } else {
+                    checkImageView.frame = self.bounds
+                }
                 
-                self.checkImageView.frame = self.bounds
-                //
                 self.checkLabel.frame = labelPosition
             }
             
@@ -394,6 +401,7 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
 		
 		cell = self.collectionView!.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! DKAssetCell
         cell.checkView.checkLabelPosition = self.imagePickerController.UIDelegate.selectedLabelPosition()
+        cell.checkView.shouldUseCheckedImage = self.imagePickerController.UIDelegate.shouldUseCheckedImage()
         cell.checkView.checkImageView.tintColor = self.imagePickerController.UIDelegate.imagePickerControllerCheckedImageTintColor()
         cell.checkView.checkLabel.font = self.imagePickerController.UIDelegate.imagePickerControllerCheckedNumberFont()
         cell.checkView.checkLabel.textColor = self.imagePickerController.UIDelegate.imagePickerControllerCheckedNumberColor()

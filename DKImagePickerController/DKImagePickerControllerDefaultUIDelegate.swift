@@ -15,7 +15,7 @@ open class DKImagePickerControllerDefaultUIDelegate: NSObject, DKImagePickerCont
         return .defaultPosition
     }
     
-    public func useSelectedBorders() -> Bool {
+    public func shouldUseCheckedImage() -> Bool {
         return true
     }
 

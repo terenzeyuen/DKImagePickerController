@@ -18,7 +18,13 @@ class CustomPickerUI: DKImagePickerControllerDefaultUIDelegate {
         return .bottomRight
     }
     
-    override func useSelectedBorders() -> Bool {
+    override func shouldUseCheckedImage() -> Bool {
         return false
     }
+    
+    override func imagePickerControllerCollectionViewBackgroundColor() -> UIColor {
+        return .black
+    }
+    
 }
+
