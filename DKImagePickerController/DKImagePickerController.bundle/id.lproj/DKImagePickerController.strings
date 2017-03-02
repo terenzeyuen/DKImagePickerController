@@ -8,7 +8,7 @@
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-"select" = "Select(%ld)";
+"select" = "Pilih(%ld)";
 
 "permissionCamera" = "Please Allow Camera Access";
 
@@ -24,8 +24,8 @@
 
 "selectPhotosOrVideosError" = "It is not possible to select photos and videos at the same time.";
 
-"done" = "Done";
+"done" = "Selanjutnya";
 
-"maxLimitReached" = "Ind Max photos limit reached";
+"maxLimitReached" = "Maksimal Gambar";
 
-"maxLimitReachedMessage" = "Ind You can select %ld photos";
+"maxLimitReachedMessage" = "Anda dapat menambahkan maksimal dari %ld Gambar";
