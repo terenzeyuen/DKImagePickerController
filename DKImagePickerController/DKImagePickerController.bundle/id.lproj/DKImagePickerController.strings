@@ -10,13 +10,13 @@
 
 "select" = "Pilih(%ld)";
 
-"permissionCamera" = "Please Allow Camera Access";
+"permissionCamera" = "Izinkan Akes Kamera";
 
-"permissionPhoto" = "Please Allow Photo Access";
+"permissionPhoto" = "Izinkan Akses Foto";
 
-"permit" = "Allow Access";
+"permit" = "Izinkan Akses";
 
-"gotoSettings" = "Go To 「Settings」 To Give Access";
+"gotoSettings" = "Berikan akses pada Setelan";
 
 "ok" = "OK";
 
