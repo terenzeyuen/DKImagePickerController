@@ -74,6 +74,8 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
             
             internal var shouldUseCheckedImage: Bool!
             
+            internal var tickBackgroundColor: UIColor!
+            
             internal lazy var checkImageView: UIImageView = {
                 let imageView = UIImageView(image: DKImageResource.checkedImage().withRenderingMode(.alwaysTemplate))
                 return imageView
@@ -116,7 +118,7 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
                 super.layoutSubviews()
                 if self.shouldUseCheckedImage != true {
                     checkImageView.frame = .zero
-                    checkLabel.layer.backgroundColor = UIColor.red.cgColor
+                    checkLabel.layer.backgroundColor = tickBackgroundColor.cgColor
                     checkLabel.layer.cornerRadius = 10
                     checkLabel.layer.masksToBounds = true
                 } else {
@@ -402,6 +404,7 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
 		cell = self.collectionView!.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! DKAssetCell
         cell.checkView.checkLabelPosition = self.imagePickerController.UIDelegate.selectedLabelPosition()
         cell.checkView.shouldUseCheckedImage = self.imagePickerController.UIDelegate.shouldUseCheckedImage()
+        cell.checkView.tickBackgroundColor = self.imagePickerController.tickBackgroundColor
         cell.checkView.checkImageView.tintColor = self.imagePickerController.UIDelegate.imagePickerControllerCheckedImageTintColor()
         cell.checkView.checkLabel.font = self.imagePickerController.UIDelegate.imagePickerControllerCheckedNumberFont()
         cell.checkView.checkLabel.textColor = self.imagePickerController.UIDelegate.imagePickerControllerCheckedNumberColor()

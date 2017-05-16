@@ -144,6 +144,8 @@ open class DKImagePickerController : UINavigationController {
     
     /// Forces selection of tapped image immediatly.
 	public var singleSelect = false
+    
+    public var tickBackgroundColor: UIColor = .red
 		
     /// The maximum count of assets which the user will be able to select.
     public var maxSelectableCount = 999

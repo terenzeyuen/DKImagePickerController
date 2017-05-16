@@ -36,6 +36,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		pickerController.UIDelegate = CustomPickerUI()
 //		pickerController.modalPresentationStyle = .overCurrentContext
 		pickerController.shouldUseTick = true
+        pickerController.tickBackgroundColor = .black
 		pickerController.assetType = assetType
 		pickerController.allowsLandscape = allowsLandscape
 		pickerController.allowMultipleTypes = allowMultipleType
