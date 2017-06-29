@@ -149,6 +149,12 @@ open class DKImagePickerController : UINavigationController {
 		
     /// The maximum count of assets which the user will be able to select.
     public var maxSelectableCount = 999
+    
+    /// The message title displayed in the alert dialog when reached limit
+    public var maxSelectedMessageTitle: String?
+    
+    /// The message displayed in the alert dialog when reached limit
+    public var maxSelectedMessage: String?
 	
 	/// Set the defaultAssetGroup to specify which album is the default asset group.
 	public var defaultAssetGroup: PHAssetCollectionSubtype?
